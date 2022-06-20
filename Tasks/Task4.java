@@ -28,6 +28,10 @@ public class Task4
             {
                 numberOfPairs += amountOfNum.get(target - tempNum);
             }
+            if(target - tempNum == tempNum)
+            {
+                numberOfPairs--;
+            }
         }
         return numberOfPairs/2;
     }
@@ -44,7 +48,7 @@ public class Task4
 
     public static void main(String[] args) 
     {
-        System.out.println(countNumberOfPairs(new Integer[]{1, 3, 6, 2, 2, 0, 4, 5}, 5));
-        System.out.println(countNumberOfPairsUsingStream(new Integer[]{1, 3, 6, 2, 2, 0, 4, 5}, 5));
+        System.out.println(countNumberOfPairs(new Integer[]{1, 3, 6, 2, 2, 0, 4, 5, 3}, 6));
+        System.out.println(countNumberOfPairsUsingStream(new Integer[]{1, 3, 6, 2, 2, 0, 4, 5, 3}, 6));
     }
 }
