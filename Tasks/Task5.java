@@ -21,6 +21,7 @@ public class Task5 {
                 .forEach((key, values) -> values.forEach(value -> invitationListConverted.append("(").append(key).append(", ").append(value) .append(")")));
         return invitationListConverted.toString();
     }
+    
     public static void main(String[] args) {
         System.out.println(convertInvitationList("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Bjon:Tornbull;Raphael:Corwill;alfred:Corwill"));
     }
