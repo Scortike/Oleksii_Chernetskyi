@@ -5,17 +5,20 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
-import java.net.URISyntaxException;
-
 import static io.restassured.config.EncoderConfig.encoderConfig;
 
 import org.json.JSONObject;
 
-public class UploadFileRequest extends URIDefinition implements IBaseRequestBuilder {
+import java.net.URI;
+
+public class UploadFileRequest implements IBaseRequestBuilder {
+
+    protected final URI UPLOAD_FILE_URI = URI.create("https://content.dropboxapi.com/2/files/upload");
     private final RequestSpecBuilder builder = new RequestSpecBuilder();
 
     public UploadFileRequest(String accessToken, String apiArg)
     {
+
         this.setUrl()
                 .setAuthorizationHeader(accessToken)
                 .setApiArgHeader(apiArg)
@@ -36,7 +39,7 @@ public class UploadFileRequest extends URIDefinition implements IBaseRequestBuil
 
     private UploadFileRequest setAuthorizationHeader(String authorizationHeader)
     {
-        this.builder.addHeader("Authorization", "Bearer "+authorizationHeader);
+        this.builder.addHeader("Authorization", "Bearer " + authorizationHeader);
         return this;
     }
 
@@ -54,6 +57,6 @@ public class UploadFileRequest extends URIDefinition implements IBaseRequestBuil
     private void setContentType() {
         this.builder.setConfig(RestAssured.config()
                         .encoderConfig(encoderConfig().appendDefaultContentCharsetToContentTypeIfUndefined(false)))
-                .setContentType(ContentType.BINARY);
+                        .setContentType(ContentType.BINARY);
     }
 }

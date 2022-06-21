@@ -5,10 +5,11 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
 
-import java.net.URISyntaxException;
+import java.net.URI;
 
-public class GetFileMetadataRequest extends URIDefinition implements IBaseRequestBuilder {
+public class GetFileMetadataRequest implements IBaseRequestBuilder {
     private final RequestSpecBuilder builder = new RequestSpecBuilder();
+    protected final URI GET_METADATA_URI = URI.create("https://api.dropboxapi.com/2/sharing/get_file_metadata");
 
     public GetFileMetadataRequest(String accessToken, String path)
     {

@@ -5,10 +5,11 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
 
-import java.net.URISyntaxException;
+import java.net.URI;
 
-public class DeleteFileRequest extends URIDefinition implements IBaseRequestBuilder{
+public class DeleteFileRequest implements IBaseRequestBuilder{
     private final RequestSpecBuilder builder = new RequestSpecBuilder();
+    protected final URI DELETE_FILE_URI = URI.create("https://api.dropboxapi.com/2/files/delete_v2");
 
     public DeleteFileRequest(String accessToken, String path)
     {
